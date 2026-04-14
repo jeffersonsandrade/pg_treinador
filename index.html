@@ -17,7 +17,7 @@
     rel="stylesheet"
   />
 
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=VelVPUdScxymOymi80UwV_RI2QiWBSNdbU-f4bnARTf2sLFOKZE1VTlET4qKQtERZCEWXTmG0i7ndHFOIsQHmFnlJ-EjYfChWLCN3mj2pibXY39-DnqAfH5hYt77mSThPwB0dU4qvwzJ_gwJxS4G1sF6sm5mfxuUSe5BsoYW8MA-R7rEte4S1YCb8KFr7TFO7NahEN4_K5bNx6mTmzXfd1R2EpRjeyF5i-3tSMavRDnF_LEkD-MPPaQ3J3Zkf2GawqPoZSSspYLv0ujCaUoIGQ" charset="UTF-8"></script><script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
@@ -166,6 +166,48 @@
       transform: scale(1.08);
     }
 
+
+
+    .btn-instagram {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.7rem;
+      min-height: 56px;
+      padding: 0.95rem 1.55rem;
+      color: #ffffff;
+      background: linear-gradient(135deg, #f58529 0%, #dd2a7b 38%, #8134af 68%, #515bd4 100%);
+      border: 1px solid rgba(255,255,255,0.12);
+      text-transform: uppercase;
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+      transition: transform 0.28s ease, box-shadow 0.28s ease, filter 0.28s ease;
+      box-shadow: 0 18px 40px -24px rgba(221, 42, 123, 0.42);
+    }
+
+    .btn-instagram:hover {
+      transform: translateY(-3px) scale(1.015);
+      filter: brightness(1.03);
+      box-shadow: 0 20px 44px -22px rgba(221, 42, 123, 0.52);
+    }
+
+    .btn-instagram:active {
+      transform: scale(0.98);
+    }
+
+    .instagram-official {
+      width: 1.1rem;
+      height: 1.1rem;
+      flex-shrink: 0;
+      fill: currentColor;
+    }
+
+    html[data-theme="light"] .btn-instagram {
+      color: #ffffff;
+    }
 
     .btn-urban.btn-outline {
       background: rgba(255,255,255,0.02);
@@ -1254,9 +1296,12 @@
                 href="https://www.instagram.com/pgvane_"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="btn-urban" 
+                class="btn-instagram"
               >
-                <i data-lucide="instagram" class="h-4 w-4"></i>Seguir no Instagram  
+                <svg class="instagram-official" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5a4.25 4.25 0 0 0 4.25 4.25h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5Zm8.88 1.13a1.12 1.12 0 1 1 0 2.24 1.12 1.12 0 0 1 0-2.24ZM12 6.5A5.5 5.5 0 1 1 6.5 12 5.51 5.51 0 0 1 12 6.5Zm0 1.5A4 4 0 1 0 16 12a4 4 0 0 0-4-4Z"/>
+                </svg>
+                Seguir no Instagram
               </a>
             </div>
 
