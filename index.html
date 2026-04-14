@@ -1,0 +1,1752 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paulo Geovane | Treinador</title>
+  <meta
+    name="description"
+    content="Treinamento de elite com estética underground industrial. Consultoria premium para hipertrofia, performance e construção física com presença."
+  />
+  <meta name="theme-color" content="#050505" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    :root {
+      --bg: #050505;
+      --surface: #090909;
+      --surface-2: #0d0d0d;
+      --text: #ffffff;
+      --muted: #a1a1aa;
+      --line: #27272a;
+      --line-2: #3f3f46;
+      --accent: #ff0000;
+      --accent-dark: #6b0000;
+      --btn-red-start: #ff0000;
+      --btn-red-end: #c10000;
+      --shadow-red: rgba(255, 0, 0, 0.2);
+      --header-bg: rgba(0,0,0,0.55);
+      --selection-bg: #dc2626;
+      --selection-text: #ffffff;
+    }
+
+    html[data-theme="light"] {
+      --bg: #f5f5f5;
+      --surface: #ffffff;
+      --surface-2: #f1f1f1;
+      --text: #111111;
+      --muted: #52525b;
+      --line: #d4d4d8;
+      --line-2: #a1a1aa;
+      --accent: #d40000;
+      --accent-dark: #7f1d1d;
+      --btn-red-start: #ff0000;
+      --btn-red-end: #c10000;
+      --shadow-red: rgba(212, 0, 0, 0.16);
+      --header-bg: rgba(255,255,255,0.75);
+      --selection-bg: #fecaca;
+      --selection-text: #111111;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      transition: background-color 0.35s ease, color 0.35s ease;
+    }
+
+    h1, h2, h3, h4, .font-display {
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 0.03em;
+    }
+
+    body::before {
+      content: none;
+    }
+
+
+    /* Efeito de Ruído/Chuviscado */
+    .noise-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      opacity: 0.12;
+      z-index: 9999;
+      background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
+    }
+
+    html[data-theme="light"] .noise-overlay {
+      opacity: 0.06;
+    }
+
+    .grid-lines {
+      background-image: none;
+      background-size: auto;
+    }
+
+    .btn-urban {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.7rem;
+      min-height: 56px;
+      padding: 0.95rem 1.55rem;
+      color: #fff;
+      background: linear-gradient(135deg, var(--btn-red-start) 0%, var(--btn-red-end) 100%);
+      border: 1px solid var(--accent);
+      text-transform: uppercase;
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+      transition: transform 0.28s ease, background 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease, color 0.28s ease;
+      box-shadow: 0 0 0 0 rgba(255,0,0,0);
+      will-change: transform;
+    }
+
+    .btn-urban:hover {
+      transform: translateY(-3px) scale(1.015);
+      background: transparent;
+      color: #fff;
+      border-color: var(--accent);
+      box-shadow: 0 18px 40px -18px var(--shadow-red);
+    }
+
+
+    html[data-theme="light"] .btn-urban:hover {
+      transform: none;
+      background: linear-gradient(135deg, var(--btn-red-start) 0%, var(--btn-red-end) 100%);
+      border-color: var(--accent);
+      box-shadow: 0 0 0 0 rgba(255,0,0,0);
+      color: #111111;
+    }
+
+    html[data-theme="light"] .btn-urban:hover .whatsapp-official {
+      transform: none;
+    }
+
+    .btn-urban:active {
+      transform: scale(0.97);
+    }
+
+    .whatsapp-official {
+      width: 1.25rem;
+      height: 1.25rem;
+      fill: currentColor;
+      flex-shrink: 0;
+      transition: transform 0.28s ease;
+    }
+
+    .btn-urban:hover .whatsapp-official {
+      transform: scale(1.08);
+    }
+
+
+    .btn-urban.btn-outline {
+      background: rgba(255,255,255,0.02);
+      border-color: var(--line-2);
+      color: var(--text);
+    }
+
+    .btn-urban.btn-outline:hover {
+      background: rgba(255, 0, 0, 0.08);
+      border-color: var(--accent);
+    }
+
+
+    .brand-link,
+    .footer-brand {
+      display: inline-block;
+      text-decoration: none;
+    }
+
+    .brand-name,
+    .footer-brand-name,
+    .brand-subtitle,
+    .footer-brand-subtitle {
+      transition: transform 0.28s ease, color 0.28s ease, letter-spacing 0.28s ease, text-shadow 0.28s ease;
+    }
+
+    .brand-link:hover .brand-name,
+    .footer-brand:hover .footer-brand-name {
+      transform: translateY(-1px);
+      text-shadow: 0 0 18px rgba(255, 0, 0, 0.16);
+    }
+
+    .brand-link:hover .brand-subtitle,
+    .footer-brand:hover .footer-brand-subtitle {
+      color: #e4e4e7;
+      letter-spacing: 0.24em;
+    }
+
+    html[data-theme="light"] .brand-link:hover .brand-subtitle,
+    html[data-theme="light"] .footer-brand:hover .footer-brand-subtitle {
+      color: #3f3f46;
+    }
+
+    .nav-link {
+      position: relative;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.78rem;
+      color: var(--muted);
+      transition: color 0.25s ease;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.35rem;
+      width: 100%;
+      height: 1px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.28s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: #fff;
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      transform: scaleX(1);
+    }
+
+    .section-title {
+      font-style: italic;
+      line-height: 0.9;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.28em;
+      font-size: 0.72rem;
+    }
+
+    .left-accent {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+    }
+
+    .reveal,
+    .reveal-scale,
+    .reveal-stagger > * {
+      opacity: 0;
+    }
+
+    .hero-panel {
+      position: relative;
+      overflow: hidden;
+      border-left: 1px solid var(--line);
+      min-height: 420px;
+    }
+
+    .hero-panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0.12) 0%, rgba(0,0,0,0.42) 65%, rgba(5,5,5,0.96) 100%),
+        radial-gradient(circle at top right, rgba(255,0,0,0.16), transparent 28%),
+        radial-gradient(circle at bottom left, rgba(255,255,255,0.04), transparent 34%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero-panel img,
+    .parallax-img,
+    .gallery-frame img,
+    .method-banner img,
+    .coach-portrait img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(1) contrast(1.08);
+      transition: transform 0.8s ease, filter 0.8s ease;
+    }
+
+    .hero-panel:hover img,
+    .gallery-frame:hover img,
+    .method-banner:hover img,
+    .coach-portrait:hover img {
+      filter: grayscale(0.05) contrast(1.12);
+      transform: scale(1.045);
+    }
+
+    .urban-card {
+      position: relative;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.012));
+      transition: transform 0.35s ease, border-color 0.35s ease, background 0.35s ease, box-shadow 0.35s ease;
+      overflow: hidden;
+    }
+
+    .urban-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border: 1px solid transparent;
+      pointer-events: none;
+      transition: inset 0.35s ease, border-color 0.35s ease;
+    }
+
+    .urban-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--line-2);
+      box-shadow: 0 24px 80px -40px rgba(0,0,0,0.7);
+      background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.016));
+    }
+
+    .urban-card:hover::before {
+      inset: -8px;
+      border-color: rgba(255, 0, 0, 0.55);
+    }
+
+    .metric-number {
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(255,255,255,0.92);
+      text-shadow: 0 0 28px rgba(255,255,255,0.04);
+    }
+
+    .gallery-frame {
+      position: relative;
+      overflow: visible;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      aspect-ratio: 4 / 5;
+    }
+
+    .gallery-frame::before {
+      content: "";
+      position: absolute;
+      inset: 15px -15px -15px 15px;
+      border: 1px solid rgba(255,0,0,0.78);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .gallery-frame img {
+      position: relative;
+      z-index: 1;
+    }
+
+    .method-banner,
+    .coach-portrait {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: var(--surface);
+    }
+
+    .method-banner::after,
+    .coach-portrait::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 20%, rgba(5,5,5,0.6) 100%);
+      pointer-events: none;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+      padding: 0.65rem 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.72rem;
+      color: #d4d4d8;
+    }
+
+    html[data-theme="light"] .chip {
+      color: #111111;
+      background: rgba(0,0,0,0.04);
+    }
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.015);
+      color: var(--text);
+      padding: 1rem 1rem;
+      outline: none;
+      transition: border-color 0.24s ease, background 0.24s ease, box-shadow 0.24s ease;
+    }
+
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+      border-color: var(--accent);
+      background: rgba(255,255,255,0.03);
+      box-shadow: 0 0 0 3px rgba(255,0,0,0.08);
+    }
+
+    .form-input::placeholder,
+    .form-textarea::placeholder {
+      color: #71717a;
+    }
+
+
+    .form-select option {
+      background: #090909;
+      color: #ffffff;
+    }
+
+    html[data-theme="light"] .form-select option {
+      background: #ffffff;
+      color: #111111;
+    }
+
+
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, #3f3f46, transparent);
+    }
+
+    .mobile-drawer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+      border-top: 1px solid transparent;
+    }
+
+    .mobile-drawer.open {
+      max-height: 420px;
+      border-top-color: var(--line);
+    }
+
+    .theme-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.02);
+      color: var(--text);
+      transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+    }
+
+    .theme-toggle:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+      background: rgba(255,0,0,0.06);
+    }
+
+    .mobile-cta-bar {
+      position: fixed;
+      left: 0.9rem;
+      right: 0.9rem;
+      bottom: 0.9rem;
+      z-index: 55;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      padding: 0.8rem;
+      border: 1px solid var(--accent);
+      background: rgba(9,9,9,0.92);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 24px 60px -32px rgba(0,0,0,0.6);
+    }
+
+    .mobile-cta-bar .btn-urban {
+      width: 100%;
+      min-height: 54px;
+      font-size: 0.75rem;
+    }
+
+    html[data-theme="light"] body::before {
+      opacity: 0.035;
+      mix-blend-mode: multiply;
+    }
+
+    html[data-theme="light"] .grid-lines {
+      background-image:
+        linear-gradient(to right, rgba(212,212,216,0.7) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(212,212,216,0.7) 1px, transparent 1px);
+    }
+
+    html[data-theme="light"] .nav-link {
+      color: #27272a;
+    }
+
+    html[data-theme="light"] .nav-link:hover,
+    html[data-theme="light"] .nav-link.active {
+      color: #000;
+    }
+
+
+    html[data-theme="light"] .hero-panel::before {
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.14) 35%, rgba(245,245,245,0.92) 100%),
+        radial-gradient(circle at top right, rgba(212,0,0,0.12), transparent 28%),
+        radial-gradient(circle at bottom left, rgba(0,0,0,0.03), transparent 34%);
+    }
+
+    html[data-theme="light"] .metric-number {
+      -webkit-text-stroke: 1px rgba(17,17,17,0.92);
+    }
+
+
+    .gallery-slider {
+      position: relative;
+      width: 100%;
+    }
+
+    .gallery-viewport {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      width: 100%;
+      margin: 0 auto;
+      border-radius: 0;
+    }
+
+    .gallery-track {
+      display: flex;
+      transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: transform;
+      width: 100%;
+    }
+
+    .gallery-slide {
+      min-width: 100%;
+      width: 100%;
+      padding: 0;
+      height: auto;
+    }
+
+    .gallery-slide-inner {
+      position: relative;
+      display: grid;
+      gap: 1rem;
+      padding: clamp(0.75rem, 2vw, 1.25rem);
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    }
+
+    .gallery-slide-main {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: var(--surface);
+    }
+
+    .gallery-slide-main img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .gallery-slide-main::before {
+      content: "";
+      position: absolute;
+      inset: 16px -16px -16px 16px;
+      border: 1px solid rgba(255,0,0,0.78);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .gallery-slide-main img {
+      position: relative;
+      z-index: 1;
+    }
+.gallery-slider-controls {
+      position: absolute;
+      inset: 50% 0 auto 0;
+      z-index: 3;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 clamp(0.5rem, 2vw, 1rem);
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+
+    .gallery-nav-btn {
+      width: 54px;
+      height: 54px;
+      border: 1px solid var(--line);
+      background: rgba(5,5,5,0.72);
+      backdrop-filter: blur(12px);
+      color: var(--text);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease, color 0.25s ease;
+      pointer-events: auto;
+    }
+
+    .gallery-nav-btn:hover {
+      transform: scale(1.04);
+      border-color: var(--accent);
+      background: rgba(255,0,0,0.1);
+      color: #fff;
+    }
+
+    .gallery-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 1.25rem;
+    }
+
+    .gallery-counter {
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.76rem;
+    }
+
+    .gallery-dots {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .gallery-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line-2);
+      background: transparent;
+      transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+      cursor: pointer;
+    }
+
+    .gallery-dot.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      transform: scale(1.08);
+    }
+
+    .theme-copy,
+    .theme-copy-soft,
+    .theme-copy-muted,
+    .theme-copy-subtle {
+      transition: color 0.35s ease;
+    }
+
+    .theme-copy {
+      color: var(--text) !important;
+    }
+
+    .theme-copy-soft {
+      color: color-mix(in srgb, var(--text) 76%, transparent) !important;
+    }
+
+    .theme-copy-muted {
+      color: var(--muted) !important;
+    }
+
+    .theme-copy-subtle {
+      color: color-mix(in srgb, var(--muted) 82%, transparent) !important;
+    }
+
+    html[data-theme="light"] .text-white,
+    html[data-theme="light"] .text-zinc-300,
+    html[data-theme="light"] .text-zinc-400,
+    html[data-theme="light"] .text-zinc-500,
+    html[data-theme="light"] .text-zinc-600 {
+      color: inherit;
+    }
+
+    html[data-theme="light"] .menu-btn {
+      color: var(--text);
+    }
+
+    html[data-theme="light"] .floating-whatsapp {
+      border-color: #ff0000;
+      background: linear-gradient(180deg, #ffffff, #ececec);
+      color: var(--text);
+    }
+
+    html[data-theme="light"] .custom-scrollbar::-webkit-scrollbar-track,
+    html[data-theme="light"] body::-webkit-scrollbar-track {
+      background: #e5e7eb;
+    }
+
+    html[data-theme="light"] .custom-scrollbar::-webkit-scrollbar-thumb,
+    html[data-theme="light"] body::-webkit-scrollbar-thumb {
+      border-color: #e5e7eb;
+    }
+
+    .menu-btn {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.02);
+      width: 48px;
+      height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      transition: border-color 0.24s ease, transform 0.24s ease, background 0.24s ease;
+    }
+
+    .menu-btn:hover {
+      border-color: var(--accent);
+      background: rgba(255,0,0,0.08);
+      transform: translateY(-2px);
+    }
+
+    .floating-whatsapp {
+      position: fixed;
+      right: 1.35rem;
+      bottom: 1.35rem;
+      z-index: 60;
+      width: 62px;
+      height: 62px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: linear-gradient(180deg, #1d1d1d, #0b0b0b);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      box-shadow: 0 18px 50px -16px rgba(0,0,0,0.72);
+      transition: transform 0.28s ease, border-color 0.28s ease, background 0.28s ease;
+    }
+
+    .floating-whatsapp:hover {
+      transform: translateY(-4px) scale(1.03);
+      border-color: var(--accent);
+      background: linear-gradient(180deg, #230000, #0b0b0b);
+    }
+
+    .custom-scrollbar::-webkit-scrollbar,
+    body::-webkit-scrollbar {
+      width: 12px;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-track,
+    body::-webkit-scrollbar-track {
+      background: #090909;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-thumb,
+    body::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #ff0000, #6b0000);
+      border: 2px solid #090909;
+    }
+
+    .custom-scrollbar {
+      scrollbar-width: thin;
+      scrollbar-color: #ff0000 #090909;
+    }
+
+    @media (max-width: 1024px) {
+      .hero-panel {
+        border-left: 0;
+        border-top: 1px solid var(--line);
+      }
+    }
+
+
+    @media (min-width: 768px) {
+      .md\:text-3xl {
+        font-size: 1.8rem;
+        line-height: 2.25rem;
+        font-style: italic;
+      }
+
+      .tracking-\[0\.14em\] {
+        letter-spacing: 0.05em;
+      }
+    }
+
+
+    @media (max-width: 1024px) {
+      .gallery-slide-main {
+        aspect-ratio: 16 / 10;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .gallery-frame::before {
+        inset: 10px -10px -10px 10px;
+      }
+
+      .eyebrow {
+        letter-spacing: 0.18em;
+      }
+
+      .floating-whatsapp {
+        right: 1rem;
+        bottom: 1rem;
+        width: 58px;
+        height: 58px;
+      }
+
+      .gallery-slide-inner {
+        padding: 0.9rem;
+      }
+
+      .gallery-slide-inner {
+        padding: 0.75rem;
+      }
+
+      .gallery-slide-main {
+        aspect-ratio: 4 / 3;
+      }
+
+      .gallery-slider-controls {
+        padding: 0 0.5rem;
+      }
+
+      .gallery-nav-btn {
+        width: 42px;
+        height: 42px;
+      }
+
+      .gallery-counter {
+        font-size: 0.7rem;
+        letter-spacing: 0.14em;
+      }
+
+      .gallery-slide-main::before {
+        inset: 10px -10px -10px 10px;
+      }
+
+      .gallery-slider-controls {
+        padding: 0 0.65rem;
+      }
+
+      .gallery-nav-btn {
+        width: 46px;
+        height: 46px;
+      }
+
+      .gallery-meta {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body class="custom-scrollbar antialiased">
+  <div class="noise-overlay"></div>
+  <header class="sticky top-0 z-50 border-b border-zinc-800 backdrop-blur-xl" style="background: var(--header-bg);">
+    <div class="mx-auto max-w-7xl border-x border-zinc-800 px-5 md:px-8">
+      <div class="flex items-center justify-between py-4">
+        <a href="#inicio" class="brand-link min-w-0">
+          <div class="brand-name font-display theme-copy text-xl uppercase tracking-[0.04em] text-white sm:text-2xl md:text-3xl">
+            Paulo Geovane <span class="text-red-500">| Treinador</span>
+          </div>
+          <div class="brand-subtitle mt-1 text-[10px] uppercase tracking-[0.2em] text-zinc-500">
+            Underground Performance System
+          </div>
+        </a>
+
+        <nav class="hidden items-center gap-4 xl:gap-8 lg:flex">
+          <a href="#inicio" class="nav-link">Início</a>
+          <a href="#sobre" class="nav-link">Sobre</a>
+          <a href="#metodo" class="nav-link">Método</a>
+          <a href="#resultados" class="nav-link">Resultados</a>
+          <a href="#contato" class="nav-link">Contato</a>
+          <button id="themeToggleDesktop" class="theme-toggle" type="button" aria-label="Alternar tema">
+            <i data-lucide="sun" class="h-5 w-5"></i>
+          </button>
+          <a href="#contato" class="btn-urban text-xs">Agendar Consultoria</a>
+        </nav>
+
+        <div class="flex items-center gap-3 lg:hidden">
+          <button id="themeToggleMobile" class="theme-toggle" type="button" aria-label="Alternar tema">
+            <i data-lucide="moon" class="h-5 w-5"></i>
+          </button>
+          <button id="menuToggle" class="menu-btn" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobileMenu">
+            <i data-lucide="menu" class="h-5 w-5"></i>
+          </button>
+        </div>
+      </div>
+
+      <div id="mobileMenu" class="mobile-drawer lg:hidden">
+        <div class="grid gap-2 py-4">
+          <a href="#inicio" class="nav-link py-2">Início</a>
+          <a href="#sobre" class="nav-link py-2">Sobre</a>
+          <a href="#metodo" class="nav-link py-2">Método</a>
+          <a href="#resultados" class="nav-link py-2">Resultados</a>
+          <a href="#contato" class="nav-link py-2">Contato</a>
+          <a href="#contato" class="btn-urban mt-2 text-xs">Agendar Consultoria</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="inicio">
+    <section class="grid-lines relative overflow-hidden border-b border-zinc-800">
+      <div class="mx-auto grid min-h-[96vh] max-w-7xl grid-cols-1 border-x border-zinc-800 lg:grid-cols-12">
+        <div class="relative flex flex-col justify-center px-5 py-16 md:px-8 lg:col-span-7 lg:py-20">
+          <div class="absolute left-0 top-0 h-full w-px bg-zinc-800/80"></div>
+          <div class="reveal mb-6 inline-flex w-fit items-center gap-2 border border-zinc-800 bg-white/[0.02] px-3 py-2 text-[11px] uppercase tracking-[0.28em] text-zinc-400">
+            <span class="h-2 w-2 bg-red-500"></span>
+            Consultoria Premium Presencial e Online
+          </div>
+
+          <h1 class="section-title reveal theme-copy max-w-5xl text-[4.25rem] uppercase italic leading-[0.86] text-white sm:text-[5.9rem] md:text-[7.2rem] lg:text-[8.9rem] xl:text-[10rem]">
+            Transforme suor em<br /><span class="text-red-600">estrutura</span>
+          </h1>
+
+          <p class="reveal left-accent theme-copy-soft mt-7 max-w-2xl text-base leading-7 text-zinc-300 md:text-lg">
+            Paulo Geovane conduz um treinamento de elite para quem quer presença física, força real e construção estética sem aceitar o comum.
+          </p>
+
+          <div class="reveal mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
+            <a href="#contato" class="btn-urban text-xs">
+                            Iniciar protocolo
+              <i data-lucide="arrow-up-right" class="h-5 w-5"></i>
+            </a>
+            <a href="#metodo" class="btn-urban btn-outline">
+              Ver método
+            </a>
+          </div>
+
+          <div class="reveal-stagger mt-12 grid max-w-3xl grid-cols-1 gap-4 border-t border-zinc-800 pt-8 sm:grid-cols-3">
+            <div>
+              <div class="font-display text-4xl tracking-[0.08em] text-white">01</div>
+              <p class="mt-2 text-sm uppercase tracking-[0.18em] theme-copy-muted text-zinc-500">Diagnóstico corporal real</p>
+            </div>
+            <div>
+              <div class="font-display text-4xl tracking-[0.08em] text-white">02</div>
+              <p class="mt-2 text-sm uppercase tracking-[0.18em] theme-copy-muted text-zinc-500">Estratégia individual</p>
+            </div>
+            <div>
+              <div class="font-display text-4xl tracking-[0.08em] text-white">03</div>
+              <p class="mt-2 text-sm uppercase tracking-[0.18em] theme-copy-muted text-zinc-500">Evolução monitorada</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-panel lg:col-span-5">
+          <!-- Substitua por uma foto real do Paulo, ex: assets/paulo-hero.jpg -->
+          <img
+            class="parallax-img"
+            src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1400&q=80"
+            alt="Paulo Geovane em treino de alta intensidade"
+          />
+          <div class="absolute bottom-0 left-0 right-0 z-10 border-t border-zinc-800 bg-black/40 p-5 backdrop-blur-md md:p-6">
+            <div class="flex flex-wrap gap-2">
+              <span class="chip"><i data-lucide="dumbbell" class="h-4 w-4 text-red-500"></i> Hipertrofia</span>
+              <span class="chip"><i data-lucide="zap" class="h-4 w-4 text-red-500"></i> Performance</span>
+              <span class="chip"><i data-lucide="shield" class="h-4 w-4 text-red-500"></i> Estética</span>
+            </div>
+            <p class="mt-4 max-w-md text-sm leading-6 text-zinc-300">
+              Treino estratégico com leitura técnica, progressão forte e posicionamento premium para quem quer resultado com identidade.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sobre" class="relative border-b border-zinc-800 pt-16 md:pt-20">
+      <div class="mx-auto max-w-7xl border-x border-zinc-800 px-5 py-20 md:px-8 md:py-24">
+        <div class="grid gap-6 lg:grid-cols-12">
+          <div class="coach-portrait reveal lg:col-span-5 min-h-[420px]">
+            <!-- Substitua por uma foto real do Paulo em retrato, ex: assets/paulo-portrait.jpg -->
+            <img src="assets/pg.jpeg" alt="Retrato de Paulo Geovane" />
+          </div>
+          <div class="reveal flex items-center border border-zinc-800 bg-white/[0.02] px-6 py-10 lg:col-span-7 md:px-10">
+            <div>
+              <p class="eyebrow text-red-500">Sobre mim</p>
+              <br>
+              <h2 class="section-title theme-copy mt-4 text-5xl uppercase italic sm:text-6xl md:text-7xl">
+                O <span class="text-red-600">TREINADOR</span>
+              </h2>
+
+                                  <h3 class="text-2xl font-black uppercase mb-6 tracking-[0.05em]">Muito prazer, eu sou o Paulo, mais conhecido como <span class="text-red-600">"PG"</span>!</h3>
+              <p class="mt-6 max-w-2xl theme-copy-soft text-base leading-7 text-zinc-400 md:text-lg">
+                        <p>Se você está em busca de transformação real, com acompanhamento sério, motivação e resultados de verdade, chegou no lugar certo.</p>              
+              <div class="mt-8 flex flex-wrap gap-3">
+                <span class="chip">Atendimento Premium</span>
+                <span class="chip">Presença Profissional</span>
+                <span class="chip">Resultado com Método</span>
+
+                
+              </div>
+              <br><br>
+              <p class="text-zinc-900 dark:text-white font-bold italic border-b border-zinc-200 dark:border-zinc-800 pb-2">Vagas limitadas para acompanhamento presencial na região!</p>
+              
+                        <p class="mt-6 max-w-2xl theme-copy-soft text-base leading-7 text-zinc-400 md:text-sm">Através da minha consultoria online, você terá um plano individualizado, pensado para sua rotina, objetivos e nível de treino.</p>
+                        
+                       
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+    </section>
+
+
+    <section class="relative border-b border-zinc-800">
+      <div class="mx-auto max-w-7xl border-x border-zinc-800 px-5 py-14 md:px-8 md:py-16">
+        <div class="grid gap-4 lg:grid-cols-4">
+          <div class="urban-card reveal p-6">
+            <div class="eyebrow theme-copy-muted text-zinc-500">Presença</div>
+            <p class="mt-3 text-sm leading-7 text-zinc-300">Uma marca pessoal forte exige um físico alinhado com disciplina, constância e imposição visual.</p>
+          </div>
+          <div class="urban-card reveal p-6">
+            <div class="eyebrow theme-copy-muted text-zinc-500">Execução</div>
+            <p class="mt-3 text-sm leading-7 text-zinc-300">O protocolo é pensado para fazer cada sessão ter função, direção e resposta concreta ao longo do tempo.</p>
+          </div>
+          <div class="urban-card reveal p-6">
+            <div class="eyebrow theme-copy-muted text-zinc-500">Método</div>
+            <p class="mt-3 text-sm leading-7 text-zinc-300">Nada de improviso. A evolução depende de estrutura, ajuste fino e controle de progressão.</p>
+          </div>
+          <div class="urban-card reveal p-6">
+            <div class="eyebrow theme-copy-muted text-zinc-500">Autoridade</div>
+            <p class="mt-3 text-sm leading-7 text-zinc-300">O novo luxo do fitness é construir resultado real sem perder estética, identidade e exclusividade.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="metodo" class="relative border-b border-zinc-800">
+      <div class="mx-auto max-w-7xl border-x border-zinc-800 px-5 py-20 md:px-8 md:py-24">
+        <div class="mb-14 grid gap-8 border-b border-zinc-800 pb-10 lg:grid-cols-12 lg:items-end">
+          <div class="lg:col-span-8">
+            <p class="eyebrow reveal text-red-500">The Method</p>
+            <h2 class="section-title reveal theme-copy mt-4 text-5xl uppercase italic sm:text-6xl md:text-7xl">
+              Forja física com <span class="text-red-600">direção precisa</span>
+            </h2>
+          </div>
+          <div class="lg:col-span-7">
+            <p class="reveal theme-copy-soft text-sm leading-7 text-zinc-400 md:text-base">
+              Cada protocolo respeita o ponto atual do aluno, o objetivo final e a construção gradual de um shape com força, consistência e presença.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid gap-6 lg:grid-cols-3">
+          <article class="urban-card reveal p-7 md:p-8">
+            <div class="mb-8 flex items-center justify-between border-b border-zinc-800 pb-5">
+              <span class="eyebrow theme-copy-muted text-zinc-500">Protocol 01</span>
+              <i data-lucide="dumbbell" class="h-5 w-5 text-red-500"></i>
+            </div>
+            <h3 class="font-display text-4xl uppercase tracking-[0.05em]">Hipertrofia</h3>
+            <p class="mt-5 theme-copy-soft text-sm leading-7 text-zinc-400">
+              Volume, intensidade e progressão com leitura técnica para gerar massa muscular com densidade, acabamento e estabilidade na evolução.
+            </p>
+            <div class="mt-8 border-t border-zinc-800 pt-5 text-[11px] uppercase tracking-[0.24em] text-zinc-500">
+              massa · densidade · consistência
+            </div>
+          </article>
+
+          <article class="urban-card reveal p-7 md:p-8">
+            <div class="mb-8 flex items-center justify-between border-b border-zinc-800 pb-5">
+              <span class="eyebrow theme-copy-muted text-zinc-500">Protocol 02</span>
+              <i data-lucide="activity" class="h-5 w-5 text-red-500"></i>
+            </div>
+            <h3 class="font-display text-4xl uppercase tracking-[0.05em]">Performance</h3>
+            <p class="mt-5 theme-copy-soft text-sm leading-7 text-zinc-400">
+              Estruturação para força, condicionamento e resposta física de alto nível com foco em potência, controle e entrega atlética.
+            </p>
+            <div class="mt-8 border-t border-zinc-800 pt-5 text-[11px] uppercase tracking-[0.24em] text-zinc-500">
+              potência · força · resposta
+            </div>
+          </article>
+
+          <article class="urban-card reveal p-7 md:p-8">
+            <div class="mb-8 flex items-center justify-between border-b border-zinc-800 pb-5">
+              <span class="eyebrow theme-copy-muted text-zinc-500">Protocol 03</span>
+              <i data-lucide="shield-check" class="h-5 w-5 text-red-500"></i>
+            </div>
+            <h3 class="font-display text-4xl uppercase tracking-[0.05em]">Estética</h3>
+            <p class="mt-5 theme-copy-soft text-sm leading-7 text-zinc-400">
+              Construção visual refinada para lapidar linhas, simetria e presença corporal de forma estratégica, firme e sustentável.
+            </p>
+            <div class="mt-8 border-t border-zinc-800 pt-5 text-[11px] uppercase tracking-[0.24em] text-zinc-500">
+              shape · presença · refinamento
+            </div>
+          </article>
+        </div>
+
+        <div class="mt-12 grid gap-6 lg:grid-cols-12">
+          <div class="method-banner reveal lg:col-span-7 min-h-[340px]">
+            <!-- Substitua por uma foto real do Paulo treinando, ex: assets/paulo-method.jpg -->
+            <img class="parallax-img" src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=1400&q=80" alt="Paulo Geovane durante uma sessão de treinamento" />
+          </div>
+          <div class="reveal flex items-center border border-zinc-800 bg-white/[0.02] px-6 py-8 lg:col-span-5 md:px-8">
+            <div>
+              <p class="eyebrow text-red-500">Precision Layer</p>
+              <h3 class="mt-3 font-display text-4xl uppercase md:text-5xl">
+                Método bruto. <span class="text-red-600">Entrega sofisticada.</span>
+              </h3>
+              <p class="mt-4 max-w-lg theme-copy-soft text-sm leading-7 text-zinc-400 md:text-base">
+                O objetivo não é apenas treinar. É construir um sistema pessoal de evolução com leitura corporal, execução precisa e resultado perceptível no espelho e na performance.
+              </p>
+              <div class="mt-6 flex flex-wrap gap-3">
+                <span class="chip">Consultoria Individual</span>
+                <span class="chip">Acompanhamento Próximo</span>
+                <span class="chip">Progressão Estratégica</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="resultados" class="relative border-b border-zinc-800">
+      <div class="mx-auto max-w-7xl border-x border-zinc-800 px-5 py-20 md:px-8 md:py-24">
+        <div class="mb-12">
+          <p class="eyebrow reveal text-red-500">Social Proof / Numbers</p>
+          <h2 class="section-title reveal theme-copy mt-4 text-5xl uppercase italic sm:text-6xl md:text-7xl">
+            Nossos <span class="text-red-600">Resultados</span>
+          </h2>
+        </div>
+
+        <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+          <div class="urban-card reveal-scale p-7">
+            <div class="font-display metric-number counter text-6xl uppercase md:text-7xl" data-target="50">0</div>
+            <p class="mt-4 text-sm uppercase tracking-[0.18em] theme-copy-muted text-zinc-500">Vidas transformadas</p>
+          </div>
+          <div class="urban-card reveal-scale p-7">
+            <div class="font-display metric-number counter text-6xl uppercase md:text-7xl" data-target="5">0</div>
+            <p class="mt-4 text-sm uppercase tracking-[0.18em] theme-copy-muted text-zinc-500">Anos de experiência</p>
+          </div>
+          <div class="urban-card reveal-scale p-7">
+            <div class="font-display metric-number counter text-6xl uppercase md:text-7xl" data-target="94">0</div>
+            <p class="mt-4 text-sm uppercase tracking-[0.18em] theme-copy-muted text-zinc-500">% de retenção</p>
+          </div>
+          <div class="urban-card reveal-scale p-7">
+            <div class="font-display metric-number counter text-6xl uppercase md:text-7xl" data-target="500">0</div>
+            <p class="mt-4 text-sm uppercase tracking-[0.18em] theme-copy-muted text-zinc-500">Sessões executadas</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+
+    <section id="galeria" class="relative border-b border-zinc-800">
+      <div class="mx-auto max-w-7xl border-x border-zinc-800 px-5 py-20 md:px-8 md:py-24">
+        <div class="mb-12 grid gap-8 border-b border-zinc-800 pb-10 lg:grid-cols-12 lg:items-end">
+          <div class="lg:col-span-8">
+            <p class="eyebrow reveal text-red-500">Visual Gallery</p>
+            <h2 class="section-title reveal theme-copy mt-4 text-5xl uppercase italic sm:text-6xl md:text-7xl">
+              Estética de aço, suor e <span class="text-red-600">presença</span>
+            </h2>
+          </div>
+          
+        </div>
+
+        <div class="gallery-slider reveal" id="trainingGallery">
+          <div class="gallery-viewport">
+            <div class="gallery-track">
+              <article class="gallery-slide">
+                <div class="gallery-slide-inner">
+                  <div class="gallery-slide-main">
+                    <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1200&q=80" alt="Treino intenso 1" />
+                  </div>
+                </div>
+              </article>
+
+              <article class="gallery-slide">
+                <div class="gallery-slide-inner">
+                  <div class="gallery-slide-main">
+                    <img src="https://images.unsplash.com/photo-1549476464-37392f717541?auto=format&fit=crop&w=1200&q=80" alt="Treino intenso 2" />
+                  </div>
+                </div>
+              </article>
+
+              <article class="gallery-slide">
+                <div class="gallery-slide-inner">
+                  <div class="gallery-slide-main">
+                    <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=1200&q=80" alt="Treino intenso 3" />
+                  </div>
+                </div>
+              </article>
+
+              <article class="gallery-slide">
+                <div class="gallery-slide-inner">
+                  <div class="gallery-slide-main">
+                    <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1200&q=80" alt="Treino intenso 4" />
+                  </div>
+                </div>
+              </article>
+
+              <article class="gallery-slide">
+                <div class="gallery-slide-inner">
+                  <div class="gallery-slide-main">
+                    <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=1200&q=80" alt="Treino intenso 5" />
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="gallery-slider-controls">
+            <button type="button" class="gallery-nav-btn" id="galleryPrev" aria-label="Imagem anterior">
+              <i data-lucide="chevron-left" class="h-5 w-5"></i>
+            </button>
+            <button type="button" class="gallery-nav-btn" id="galleryNext" aria-label="Próxima imagem">
+              <i data-lucide="chevron-right" class="h-5 w-5"></i>
+            </button>
+          </div>
+
+          <div class="gallery-meta">
+            <div>
+              <p class="eyebrow theme-copy-muted">Training Frames</p>
+              <p class="mt-2 text-sm leading-7 theme-copy-soft">
+                Treinamentos personalizados para cada biotipo.
+              </p>
+            </div>
+            <div class="flex items-center gap-5">
+              <div class="gallery-counter" id="galleryCounter">01 / 05</div>
+              <div class="gallery-dots" id="galleryDots">
+                <button type="button" class="gallery-dot active" data-slide="0" aria-label="Ir para imagem 1"></button>
+                <button type="button" class="gallery-dot" data-slide="1" aria-label="Ir para imagem 2"></button>
+                <button type="button" class="gallery-dot" data-slide="2" aria-label="Ir para imagem 3"></button>
+                <button type="button" class="gallery-dot" data-slide="3" aria-label="Ir para imagem 4"></button>
+                <button type="button" class="gallery-dot" data-slide="4" aria-label="Ir para imagem 5"></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><section id="contato" class="grid-lines relative">
+      <div class="mx-auto max-w-7xl border-x border-zinc-800">
+        <div class="grid lg:grid-cols-12">
+          <div class="border-b border-zinc-800 px-5 py-16 md:px-8 lg:col-span-7 lg:border-b-0 lg:border-r lg:py-20">
+            <p class="eyebrow reveal text-red-500 flex items-center gap-2"><i data-lucide="instagram" class="h-4 w-4"></i>Instagram</p>
+            <h2 class="section-title reveal theme-copy mt-4 max-w-4xl text-5xl uppercase italic sm:text-6xl md:text-7xl lg:text-8xl">
+              Siga-me e acompanhe a <span class="text-red-600">evolução real</span>
+            </h2>
+            
+
+            <div class="reveal mt-10 flex flex-wrap gap-4">
+              <a
+                href="https://www.instagram.com/pgvane_"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn-urban" 
+              >
+                <i data-lucide="instagram" class="h-4 w-4"></i>Seguir no Instagram  
+              </a>
+            </div>
+
+            
+          </div>
+
+          <div class="px-5 py-16 md:px-8 lg:col-span-5 lg:py-20">
+            <div id="formulario" class="reveal border border-zinc-800 bg-white/[0.02] p-6 md:p-8">
+              <div class="mb-8 border-b border-zinc-800 pb-5">
+                <p class="eyebrow theme-copy-muted text-zinc-500">Consultoria inicial</p>
+                <h3 class="mt-3 font-display theme-copy text-4xl uppercase tracking-[0.05em]">Iniciar protocolo</h3>
+              </div>
+
+              <form id="whatsappForm" class="space-y-4" novalidate>
+                <input
+                  id="nome"
+                  type="text"
+                  class="form-input"
+                  placeholder="Seu nome"
+                  required
+                  minlength="3"
+                  maxlength="80"
+                  title="Informe seu nome."
+                />
+                <input
+                  id="email"
+                  type="email"
+                  class="form-input"
+                  placeholder="Seu melhor e-mail"
+                  required
+                  maxlength="120"
+                  pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                  title="Informe um e-mail válido, como exemplo@dominio.com."
+                />
+                <input
+                  id="telefone"
+                  type="tel"
+                  class="form-input"
+                  placeholder="WhatsApp"
+                  required
+                  inputmode="tel"
+                  maxlength="20"
+                  pattern="^(?:\+?55\s?)?(?:\(?\d{2}\)?\s?)?(?:9\d{4}|\d{4})[-\s]?\d{4}$"
+                  title="Informe um WhatsApp válido com DDD. Ex.: (43) 98849-6320"
+                />
+                <select id="objetivo" class="form-select" required title="Selecione um objetivo principal.">
+                  <option value="" selected disabled>Objetivo principal</option>
+                  <option>Hipertrofia</option>
+                  <option>Performance</option>
+                  <option>Estética</option>
+                  <option>Consultoria completa</option>
+                </select>
+                <textarea
+                  id="mensagem"
+                  rows="4"
+                  class="form-textarea resize-none"
+                  placeholder="Conte brevemente o que você busca"
+                  required
+                  minlength="10"
+                  maxlength="500"
+                  title="Escreva uma mensagem com pelo menos 10 caracteres."
+                ></textarea>
+
+                <button type="submit" class="btn-urban w-full">
+                  Enviar via WhatsApp
+                </button>
+              </form>
+
+              <p id="formSuccess" class="hidden mt-4 text-sm font-semibold uppercase tracking-[0.14em] text-green-500">
+                Mensagem enviada com sucesso!
+              </p>
+
+              <p class="mt-5 text-xs uppercase tracking-[0.16em] theme-copy-muted text-zinc-500">
+                Atendimento sob consulta · Vagas limitadas
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <footer class="flex flex-col gap-4 px-5 py-6 md:flex-row md:items-center md:justify-between md:px-8">
+          <a href="#inicio" class="footer-brand">
+            <div class="footer-brand-name font-display theme-copy text-2xl uppercase tracking-[0.01em] italic sm:text-3xl">
+              Paulo Geovane <span class="text-red-500">| Treinador</span>
+            </div>
+            <div class="footer-brand-subtitle mt-1 text-[10px] uppercase tracking-[0.2em] text-zinc-500">
+              Underground Performance System
+            </div>
+          </a>
+
+          <p class="text-xs uppercase tracking-[0.16em] theme-copy-subtle text-zinc-600">
+            © 2026. Todos os direitos reservados.
+          </p>
+        </footer>
+      </div>
+    </section>
+  </main>
+
+  <a
+    href="https://wa.me/5543988496320?text=Ol%C3%A1%2C%20PG!%20Gostaria%20de%20uma%20consultoria!"
+    class="floating-whatsapp"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Falar no WhatsApp"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="whatsapp-official" aria-hidden="true"><path d="M16 .4C7.4.4.4 7.4.4 16c0 2.8.7 5.5 2.1 7.9L.1 32l8.3-2.2c2.3 1.2 4.9 1.9 7.6 1.9 8.6 0 15.6-7 15.6-15.6S24.6.4 16 .4zm0 28.4c-2.4 0-4.8-.6-6.9-1.7l-.5-.3-4.9 1.3 1.3-4.8-.3-.5c-1.3-2.1-1.9-4.5-1.9-6.9C2.8 8.6 8.6 2.8 16 2.8S29.2 8.6 29.2 16 23.4 28.8 16 28.8zm7.4-10.9c-.4-.2-2.3-1.1-2.7-1.2-.4-.2-.6-.2-.9.2-.2.4-1 1.2-1.2 1.4-.2.2-.4.3-.8.1-.4-.2-1.6-.6-3-1.9-1.1-1-1.9-2.2-2.1-2.6-.2-.4 0-.6.1-.8.1-.1.4-.4.6-.6.2-.2.2-.4.3-.6.1-.2 0-.5 0-.6-.1-.2-.9-2.2-1.2-3-.3-.7-.6-.6-.9-.6h-.8c-.3 0-.6.1-.9.4-.3.3-1.2 1.2-1.2 2.9s1.2 3.4 1.4 3.6c.2.2 2.3 3.6 5.6 5 .8.4 1.4.6 1.9.8.8.3 1.6.3 2.2.2.7-.1 2.3-.9 2.6-1.8.3-.9.3-1.6.2-1.8-.1-.2-.3-.3-.7-.5z"/></svg>
+  </a>
+
+  <div class="mobile-cta-bar md:hidden">
+    <a href="https://wa.me/5543988496320?text=Ol%C3%A1%2C%20PG!%20Gostaria%20de%20uma%20consultoria!" target="_blank" rel="noopener noreferrer" class="btn-urban">
+      Agendar Consultoria
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="whatsapp-official" aria-hidden="true"><path d="M16 .4C7.4.4.4 7.4.4 16c0 2.8.7 5.5 2.1 7.9L.1 32l8.3-2.2c2.3 1.2 4.9 1.9 7.6 1.9 8.6 0 15.6-7 15.6-15.6S24.6.4 16 .4zm0 28.4c-2.4 0-4.8-.6-6.9-1.7l-.5-.3-4.9 1.3 1.3-4.8-.3-.5c-1.3-2.1-1.9-4.5-1.9-6.9C2.8 8.6 8.6 2.8 16 2.8S29.2 8.6 29.2 16 23.4 28.8 16 28.8zm7.4-10.9c-.4-.2-2.3-1.1-2.7-1.2-.4-.2-.6-.2-.9.2-.2.4-1 1.2-1.2 1.4-.2.2-.4.3-.8.1-.4-.2-1.6-.6-3-1.9-1.1-1-1.9-2.2-2.1-2.6-.2-.4 0-.6.1-.8.1-.1.4-.4.6-.6.2-.2.2-.4.3-.6.1-.2 0-.5 0-.6-.1-.2-.9-2.2-1.2-3-.3-.7-.6-.6-.9-.6h-.8c-.3 0-.6.1-.9.4-.3.3-1.2 1.2-1.2 2.9s1.2 3.4 1.4 3.6c.2.2 2.3 3.6 5.6 5 .8.4 1.4.6 1.9.8.8.3 1.6.3 2.2.2.7-.1 2.3-.9 2.6-1.8.3-.9.3-1.6.2-1.8-.1-.2-.3-.3-.7-.5z"/></svg>
+    </a>
+  </div>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            urban: {
+              bg: '#050505',
+              line: '#27272a',
+              accent: '#ff0000'
+            }
+          }
+        }
+      }
+    };
+
+    lucide.createIcons();
+    gsap.registerPlugin(ScrollTrigger);
+
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileLinks = mobileMenu.querySelectorAll('a');
+    const themeToggleDesktop = document.getElementById('themeToggleDesktop');
+    const themeToggleMobile = document.getElementById('themeToggleMobile');
+    const root = document.documentElement;
+
+    const applyTheme = (theme) => {
+      root.setAttribute('data-theme', theme);
+      localStorage.setItem('pg-theme', theme);
+    };
+
+    const savedTheme = localStorage.getItem('pg-theme');
+    if (savedTheme) {
+      applyTheme(savedTheme);
+    }
+
+    const updateThemeIcons = () => {
+      const isLight = root.getAttribute('data-theme') === 'light';
+      if (themeToggleDesktop) {
+        themeToggleDesktop.innerHTML = isLight
+          ? '<i data-lucide="moon" class="h-5 w-5"></i>'
+          : '<i data-lucide="sun" class="h-5 w-5"></i>';
+      }
+      if (themeToggleMobile) {
+        themeToggleMobile.innerHTML = isLight
+          ? '<i data-lucide="moon" class="h-5 w-5"></i>'
+          : '<i data-lucide="sun" class="h-5 w-5"></i>';
+      }
+      lucide.createIcons();
+    };
+
+    updateThemeIcons();
+
+    [themeToggleDesktop, themeToggleMobile].forEach(btn => {
+      btn?.addEventListener('click', () => {
+        const nextTheme = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+        applyTheme(nextTheme);
+        updateThemeIcons();
+      });
+    });
+
+    menuToggle?.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+      const icon = menuToggle.querySelector('svg');
+      if (icon) {
+        icon.remove();
+      }
+      menuToggle.innerHTML = isOpen
+        ? '<i data-lucide="x" class="h-5 w-5"></i>'
+        : '<i data-lucide="menu" class="h-5 w-5"></i>';
+      lucide.createIcons();
+    });
+
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.innerHTML = '<i data-lucide="menu" class="h-5 w-5"></i>';
+        lucide.createIcons();
+      });
+    });
+
+    gsap.utils.toArray('.reveal').forEach((el) => {
+      gsap.fromTo(
+        el,
+        { y: 60, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1.05,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 86%',
+            toggleActions: 'play none none none'
+          }
+        }
+      );
+    });
+
+    gsap.utils.toArray('.reveal-scale').forEach((el) => {
+      gsap.fromTo(
+        el,
+        { y: 40, scale: 0.96, opacity: 0 },
+        {
+          y: 0,
+          scale: 1,
+          opacity: 1,
+          duration: 0.95,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 88%',
+            toggleActions: 'play none none none'
+          }
+        }
+      );
+    });
+
+    gsap.utils.toArray('.reveal-stagger').forEach((group) => {
+      gsap.fromTo(
+        group.children,
+        { y: 40, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.12,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: group,
+            start: 'top 88%',
+            toggleActions: 'play none none none'
+          }
+        }
+      );
+    });
+
+    gsap.fromTo(
+      '.section-title',
+      { y: 70, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1.1,
+        stagger: 0.18,
+        ease: 'power4.out',
+        scrollTrigger: {
+          trigger: 'body',
+          start: 'top top'
+        }
+      }
+    );
+
+    gsap.utils.toArray('.parallax-img').forEach((img) => {
+      gsap.fromTo(
+        img,
+        { yPercent: -6, scale: 1.08 },
+        {
+          yPercent: 6,
+          scale: 1.14,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: img.parentElement,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: true
+          }
+        }
+      );
+    });
+
+    gsap.fromTo(
+      '.hero-panel',
+      { clipPath: 'inset(0 0 100% 0)' },
+      {
+        clipPath: 'inset(0 0 0% 0)',
+        duration: 1.4,
+        ease: 'power4.out'
+      }
+    );
+
+    gsap.utils.toArray('.counter').forEach((counter) => {
+      const target = parseInt(counter.dataset.target, 10);
+      gsap.fromTo(
+        counter,
+        { innerText: 0 },
+        {
+          innerText: target,
+          duration: 2,
+          ease: 'power2.out',
+          snap: { innerText: 1 },
+          scrollTrigger: {
+            trigger: counter,
+            start: 'top 88%',
+            once: true
+          },
+          onUpdate: function () {
+            const value = Math.floor(this.targets()[0].innerText);
+            if (target === 94) {
+              counter.innerText = value + '%';
+            } else if (target === 500 || target === 1000) {
+              counter.innerText = '+' + value;
+            } else {
+              counter.innerText = value;
+            }
+          }
+        }
+      );
+    });
+
+
+    const trainingGallery = document.getElementById('trainingGallery');
+    const galleryTrack = trainingGallery?.querySelector('.gallery-track');
+    const gallerySlides = trainingGallery ? Array.from(trainingGallery.querySelectorAll('.gallery-slide')) : [];
+    const galleryDots = trainingGallery ? Array.from(document.querySelectorAll('#galleryDots .gallery-dot')) : [];
+    const galleryCounter = document.getElementById('galleryCounter');
+    const galleryPrev = document.getElementById('galleryPrev');
+    const galleryNext = document.getElementById('galleryNext');
+    let galleryIndex = 0;
+    let galleryInterval;
+
+    const updateGallery = (index) => {
+      if (!galleryTrack || !gallerySlides.length) return;
+      galleryIndex = (index + gallerySlides.length) % gallerySlides.length;
+      galleryTrack.style.transform = `translateX(-${galleryIndex * 100}%)`;
+      galleryDots.forEach((dot, idx) => dot.classList.toggle('active', idx === galleryIndex));
+      if (galleryCounter) {
+        galleryCounter.textContent = `${String(galleryIndex + 1).padStart(2, '0')} / ${String(gallerySlides.length).padStart(2, '0')}`;
+      }
+    };
+
+    const startGalleryAutoplay = () => {
+      if (!gallerySlides.length) return;
+      clearInterval(galleryInterval);
+      galleryInterval = setInterval(() => updateGallery(galleryIndex + 1), 4200);
+    };
+
+    galleryPrev?.addEventListener('click', () => {
+      updateGallery(galleryIndex - 1);
+      startGalleryAutoplay();
+    });
+
+    galleryNext?.addEventListener('click', () => {
+      updateGallery(galleryIndex + 1);
+      startGalleryAutoplay();
+    });
+
+    galleryDots.forEach((dot) => {
+      dot.addEventListener('click', () => {
+        updateGallery(Number(dot.dataset.slide));
+        startGalleryAutoplay();
+      });
+    });
+
+    trainingGallery?.addEventListener('mouseenter', () => clearInterval(galleryInterval));
+    trainingGallery?.addEventListener('mouseleave', startGalleryAutoplay);
+    updateGallery(0);
+    startGalleryAutoplay();
+
+    const form = document.getElementById('whatsappForm');
+    const successMsg = document.getElementById('formSuccess');
+    const regexRules = {
+      nome: /^(?=.{3,80}$).+$/,
+      email: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+      telefone: /^(?:\+?55\s?)?(?:\(?\d{2}\)?\s?)?(?:9\d{4}|\d{4})[-\s]?\d{4}$/,
+      mensagem: /^.{10,500}$/s
+    };
+
+    const allowedGoals = ['Hipertrofia', 'Performance', 'Estética', 'Consultoria completa'];
+
+    const validateField = (field) => {
+      const value = field.value.trim();
+      let isValid = true;
+      let message = '';
+
+      if (field.id === 'nome') {
+        isValid = value.length >= 3 && value.length <= 80;
+        message = 'Informe seu nome.';
+      }
+
+      if (field.id === 'email') {
+        isValid = regexRules.email.test(value);
+        message = 'Informe um e-mail válido, como exemplo@dominio.com.';
+      }
+
+      if (field.id === 'telefone') {
+        isValid = regexRules.telefone.test(value);
+        message = 'Informe um WhatsApp válido com DDD. Ex.: (43) 98849-6320';
+      }
+
+      if (field.id === 'objetivo') {
+        isValid = allowedGoals.includes(value);
+        message = 'Selecione um objetivo principal.';
+      }
+
+      if (field.id === 'mensagem') {
+        isValid = regexRules.mensagem.test(value);
+        message = 'Escreva uma mensagem com pelo menos 10 caracteres.';
+      }
+
+      field.setCustomValidity(isValid ? '' : message);
+      return isValid;
+    };
+
+    ['nome', 'email', 'telefone', 'objetivo', 'mensagem'].forEach((id) => {
+      const field = document.getElementById(id);
+      field?.addEventListener('input', () => validateField(field));
+      field?.addEventListener('change', () => validateField(field));
+    });
+
+    form?.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const nomeField = document.getElementById('nome');
+      const emailField = document.getElementById('email');
+      const telefoneField = document.getElementById('telefone');
+      const objetivoField = document.getElementById('objetivo');
+      const mensagemField = document.getElementById('mensagem');
+
+      const fields = [nomeField, emailField, telefoneField, objetivoField, mensagemField];
+      const allValid = fields.every((field) => validateField(field));
+
+      if (!allValid || !form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      const nome = nomeField.value.trim();
+      const email = emailField.value.trim();
+      const telefone = telefoneField.value.trim();
+      const objetivo = objetivoField.value.trim();
+      const mensagemExtra = mensagemField.value.trim();
+
+      const mensagem = `Olá, PG! Gostaria de uma consultoria!%0A%0A` +
+        `Nome: ${encodeURIComponent(nome)}%0A` +
+        `E-mail: ${encodeURIComponent(email)}%0A` +
+        `WhatsApp: ${encodeURIComponent(telefone)}%0A` +
+        `Objetivo: ${encodeURIComponent(objetivo)}%0A` +
+        `Mensagem: ${encodeURIComponent(mensagemExtra)}`;
+
+      const url = `https://wa.me/5543988496320?text=${mensagem}`;
+      window.open(url, '_blank');
+
+      if (successMsg) {
+        successMsg.classList.remove('hidden');
+      }
+
+      form.reset();
+
+      setTimeout(() => {
+        successMsg?.classList.add('hidden');
+      }, 4000);
+    });
+
+    const sections = document.querySelectorAll('main section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    const setActiveLink = () => {
+      let current = 'inicio';
+      sections.forEach(section => {
+        const top = section.offsetTop - 120;
+        if (window.scrollY >= top) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
+      });
+    };
+
+    window.addEventListener('scroll', setActiveLink);
+    setActiveLink();
+  </script>
+</body>
+</html>
